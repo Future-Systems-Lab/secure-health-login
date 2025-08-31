@@ -1,9 +1,8 @@
 // Rights Reserved, Unlicensed
 import { NextResponse } from "next/server";
 import { verifyTypedData } from "viem";
-
-// Import runtime domain + type-safe message
-import { EIP712Domain, types, type LoginMessage } from "../../../lib/typed";
+import { EIP712Domain } from "../../../lib/typed";  // runtime object
+import type { LoginMessage } from "../../../lib/typed";  // type only
 
 export async function POST(req: Request) {
   try {
@@ -11,8 +10,8 @@ export async function POST(req: Request) {
 
     const valid = await verifyTypedData({
       address,
-      domain: EIP712Domain,     // ✅ now a runtime object
-      types,                    // ✅ struct types
+      domain: EIP712Domain,
+      types: { LoginMessage },   // runtime reference
       primaryType: "LoginMessage",
       message,
       signature,
