@@ -1,7 +1,7 @@
 // Rights Reserved, Unlicensed
 import { NextResponse } from "next/server";
 import { verifyTypedData } from "viem";
-import { EIP712Domain, LoginMessage } from "../../../lib/typed";
+import type { EIP712Domain, LoginMessage } from "../../../lib/typed";
 
 export async function POST(req: Request) {
   try {
