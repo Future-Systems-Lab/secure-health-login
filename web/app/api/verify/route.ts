@@ -1,33 +1,28 @@
-import { verifyTypedData, type Address } from "viem";
-import { EIP712Domain, types, type LoginMessage } from "../../../lib/typed";
-
-export const dynamic = "force-dynamic";
+// Rights Reserved, Unlicensed
+import { NextResponse } from "next/server";
+import { verifyTypedData } from "viem";
+import { EIP712Domain, LoginMessage } from "../../../lib/typed";
 
 export async function POST(req: Request) {
   try {
-    const { address, signature, message } = (await req.json()) as {
-      address: Address;
-      signature: `0x${string}`;
-      message: Omit<LoginMessage, "chainId"> & { chainId: number | string };
-    };
+    const { address, message, signature } = await req.json();
 
-    const fixed: LoginMessage = {
-      ...message,
-      chainId: BigInt(message.chainId),
-    } as unknown as LoginMessage;
-
-    const ok = await verifyTypedData({
+    const valid = await verifyTypedData({
       address,
       domain: EIP712Domain,
-      types,
-      primaryType: "Login",
-      message: fixed,
+      types: LoginMessage,
+      primaryType: "LoginMessage",
+      message,
       signature,
     });
 
-    if (!ok) return new Response(JSON.stringify({ ok: false }), { status: 401, headers: { "content-type": "application/json" } });
-    return new Response(JSON.stringify({ ok: true }), { headers: { "content-type": "application/json" } });
-  } catch {
-    return new Response(JSON.stringify({ ok: false, error: "server error" }), { status: 500, headers: { "content-type": "application/json" } });
+    if (!valid) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+
+    return NextResponse.json({ ok: true, address });
+  } catch (err) {
+    console.error("Verify error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
