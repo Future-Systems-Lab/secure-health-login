@@ -1,0 +1,57 @@
+// Rights Reserved, Unlicensed "use client"; import { useAccount, useConnect, useDisconnect, useSignTypedData } from "wagmi"; import { injected } from "@wagmi/connectors"; import { useEffect, useState } from "react"; cd ~/secure-health-login/web type Me = { address: 
+string | null; role: "Patient" | "Practitioner" | null };
+
+export default function Home() { printf '%s\n' '// Rights Reserved, Unlicensed const { connect } = useConnect({ connector: injected() }); import { NextRequest } from "next/server";  const { address, isConnected } = useAccount(); import { getIronSession } from 
+"iron-session";  const { disconnect } = useDisconnect(); import { cookies } from "next/headers";  const { signTypedDataAsync } = useSignTypedData(); import { sessionOptions, SessionData } from "@/lib/session";  const [me, setMe] = useState<Me>({ address: null, role: 
+null });
+
+  useEffect(() => { fetch("/api/me").then(r => r.json()).then(setMe); }, []); export async function GET(_req: NextRequest) { const session = await getIronSession<SessionData>(cookies(), sessionOptions);  async function siwe712() { return Response.json({ address: 
+  session.address ?? null, role: session.role ?? null });  const { nonce } = await fetch("/api/siwe/nonce").then(r => r.json());
+} const domain = { name: "secure-health-login", version: "1", chainId: 11155111, verifyingContract: "0x0000000000000000000000000000000000000000" }; ' > src/app/api/me/route.ts const types = { SIWE: [
+      { name: "domain", type: "string" }, { name: "address", type: "address" }, { name: "statement", type: "string" }, { name: "uri", type: "string" }, { name: "version", type: "string" }, { name: "chainId", type: "uint256" }, { name: "nonce", type: "string" }, { 
+      name: "issuedAt", type: "string" }
+printf '%s\n' '// Rights Reserved, Unlicensed ]}; import { NextRequest } from "next/server";  const message = { import { getIronSession } from "iron-session";  domain: window.location.host, import { cookies, headers } from "next/headers";  address, import { 
+sessionOptions, SessionData } from "@/lib/session";  statement: "Sign-In with Ethereum for secure-health-login", import { SiweMessage } from "siwe";  uri: window.location.origin,
+      version: "1", chainId: 11155111, nonce, issuedAt: new Date().toISOString(), export async function POST(req: NextRequest) { };
+  const session = await getIronSession<SessionData>(cookies(), sessionOptions);  const signature = await signTypedDataAsync({ domain, types, primaryType: "SIWE", message });
+    await fetch("/api/siwe/verify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message, signature }) })
+  const { message, signature } = await req.json();  .then(r => r.json())
+  const siwe = new SiweMessage(message);
+
+  const host = (await headers()).get("host")!;
+  await siwe.verify({ signature, domain: host, nonce: message.nonce });
+
+  session.address = siwe.address as `0x${string}`;
+  session.role = parseInt(session.address.slice(-1), 16) % 2 === 0 ? "Patient" : "Practitioner";
+  await session.save();
+
+  return Response.json({ ok: true, address: session.address, role: session.role });
+}
+' > src/app/api/siwe/verify/route.ts
+
+pkill -f "next dev" || true
+pnpm dev
+pkill -f "next dev" || true
+pnpm dev
+'pkill -f "next dev" || true
+pnpm dev
+kill -9 $(lsof -ti:3000) 2>/dev/null || true
+
+      .then(setMe);
+  }
+
+  return (
+    <main className="p-6 space-y-4">
+      <h1 className="text-2xl font-semibold">Secure Health Login</h1>
+      {!isConnected && <button className="px-4 py-2 rounded bg-black text-white" onClick={() => connect()}>Connect Wallet</button>}
+      {isConnected && <button className="px-4 py-2 rounded border" onClick={() => disconnect()}>Disconnect</button>}
+      <div>
+        <button className="px-4 py-2 rounded bg-blue-600 text-white disabled:opacity-50" onClick={siwe712} disabled={!isConnected}>
+          Sign-In with Ethereum (EIP-712)
+        </button>
+      </div>
+      <pre className="text-sm bg-gray-100 p-3 rounded">{JSON.stringify({ connected: isConnected, wallet: address, session: me }, null, 2)}</pre>
+    </main>
+  );
+}
+

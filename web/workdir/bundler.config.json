@@ -1,0 +1,14 @@
+{
+  "port": "4337",
+  "privateApiPort": "4338",
+  "entryPoint": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+  "network": "https://rpc.sepolia.org",
+  "chainId": 11155111,
+  "mnemonic": "/workdir/mnemonic.txt",
+  "beneficiary": "0x0000000000000000000000000000000000000001",
+  "gasFactor": "1",
+  "minBalance": "0",
+  "maxBundleGas": 10000000,
+  "autoBundleInterval": 0,
+  "autoBundleMempoolSize": 10
+}
