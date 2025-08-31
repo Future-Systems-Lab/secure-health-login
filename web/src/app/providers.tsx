@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const config = createConfig({
   chains: [sepolia],
   transports: { [sepolia.id]: http("https://rpc.ankr.com/eth_sepolia") },
-  connectors: [injected()],
+  connectors: [injected({ shimDisconnect: true })],
   storage: createStorage({ storage: cookieStorage }),
 });
 

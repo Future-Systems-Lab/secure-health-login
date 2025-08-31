@@ -6,7 +6,7 @@ const queryClient = new QueryClient();
 export const config = createConfig({
   chains: [sepolia],
   transports: { [sepolia.id]: http("https://rpc.sepolia.org") },
-  connectors: [injected()]
+  connectors: [injected({ shimDisconnect: true })]
 });
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
