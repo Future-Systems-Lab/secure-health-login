@@ -1,5 +1,5 @@
 "use client";
-import { createConfig, http, WagmiProvider } from "wagmi"; import { injected } from "wagmi/connectors";
+import { createConfig, http, WagmiProvider } from "wagmi";
 import type { Connector } from "wagmi";
 import { injected } from "@wagmi/connectors";
 import { sepolia } from "wagmi/chains";
