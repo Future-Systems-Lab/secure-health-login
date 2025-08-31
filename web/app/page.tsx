@@ -34,7 +34,7 @@ export default function Page() {
     const signature = await signTypedDataAsync({
       domain: EIP712Domain,
       types,
-      primaryType: "Login",
+      primaryType: "LoginMessage",
       message
     });
 
