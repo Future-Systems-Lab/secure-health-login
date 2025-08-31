@@ -1,5 +1,11 @@
 /* Rights Reserved, Unlicensed */
-export type LoginMessage = { address: `0x${string}`; timestamp: string };
+export type LoginMessage = {
+  address: `0x${string}`;
+  uri: string;
+  nonce: string;
+  issuedAt: string;
+  chainId: number;
+};
 
 export const EIP712Domain = {
   name: "SecureHealth",
@@ -15,6 +21,9 @@ export const types = {
   ],
   LoginMessage: [
     { name: "address", type: "address" },
-    { name: "timestamp", type: "string" },
+    { name: "uri", type: "string" },
+    { name: "nonce", type: "string" },
+    { name: "issuedAt", type: "string" },
+    { name: "chainId", type: "uint256" },
   ],
 } as const;
