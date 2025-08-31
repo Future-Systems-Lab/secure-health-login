@@ -1,17 +1,74 @@
-# SecureHealth Login  
-Baseline implementation of EIP-712 typed login (SIWE-style) with Next.js, wagmi, and iron-session.  
+# 🏥 Secure Health Login — Web3 Authentication for Healthcare  
 
-## Features  
-- Wallet connect (Sepolia testnet)  
-- EIP-712 typed login signing  
-- Basic session handling  
+A practitioner-facing authentication demo that replaces passwords with **wallet-based login**.  
+Built for privacy-first healthcare systems using **SIWE (Sign-In with Ethereum)**, **EIP-712 structured signing**, and **EIP-4337 account abstraction**.  
 
-## Getting Started  
+---
+
+## 🚀 Features  
+
+- **SIWE (Sign-In with Ethereum):** decentralized login, no centralized password risk.  
+- **EIP-712 Structured Signing:** secure, human-readable message signing (industry standard).  
+- **EIP-4337 Smart Accounts:** account abstraction enabling gasless logins and smart wallet features.  
+- **Dockerized Environment:** reproducible, professional setup with Nginx + bundler for easy deployment.  
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Next.js** (frontend)  
+- **wagmi + viem** (wallet integration)  
+- **EIP-712 schema** for secure signing  
+- **EIP-4337 bundler** (Sepolia testnet)  
+- **Docker + Nginx** for reproducibility  
+
+---
+
+## 📖 Why This Matters for Healthcare  
+
+- **Patient & Practitioner Usability:** login without passwords or gas fees.  
+- **Privacy & Compliance:** HIPAA-aligned architecture, no central credential storage.  
+- **Healthcare Integration:** adaptable for EMR/EHR systems, practitioner portals, or patient access apps.  
+
+---
+
+## 🔧 Getting Started  
+
 ```bash
+# Clone repo
+git clone https://github.com/Where-Mental-Wellness-Meets-Metaverse/secure-health-login.git
+cd secure-health-login/web
+
+# Install dependencies
 pnpm install
-pnpm dev
+
+# Run Docker services (bundler + nginx)
+docker-compose up -d
+
+# Start app
+pnpm run dev
+````
+
+---
+
+## 📌 Next Steps
+
+* Extend for patient-facing flows
+* Add FHIR/HL7-based consent hooks
+* Expand smart wallet features (multi-sig, recovery)
+
+---
+
+## 🏷️ Tag History
+
+* **v1-login-working** → baseline login flow working
+
+---
+
+## 📜 License
+
+Rights Reserved, Unlicensed
+
 ```
-
-## Tag History  
-- v1-login-working → Baseline login flow working
-
+Do you want me to also give you the **terminal commands** to overwrite your existing README.md with this and push to GitHub?
+```
