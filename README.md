@@ -68,7 +68,3 @@ pnpm run dev
 ## 📜 License
 
 Rights Reserved, Unlicensed
-
-```
-Do you want me to also give you the **terminal commands** to overwrite your existing README.md with this and push to GitHub?
-```
