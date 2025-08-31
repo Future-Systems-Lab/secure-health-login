@@ -1,1 +1,5 @@
 web/README.md
+node_modules/
+.next/
+dist/
+.env
