@@ -12,14 +12,14 @@
     "@account-abstraction/contracts": "^0.8.0",
     "@account-abstraction/sdk": "^0.6.0",
     "@tanstack/react-query": "^5.56.2",
-    "@wagmi/connectors": "^5.9.9",
+    "@wagmi/connectors": "5.9.9",
     "iron-session": "8.0.3",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "siwe": "^3.0.0",
     "viem": "^2.16.5",
-    "wagmi": "^2.12.10"
+    "wagmi": "2.16.9"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -31,5 +31,26 @@
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@wagmi/core": "2.20.3"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "*"
+      }
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "bufferutil",
+      "keccak",
+      "sharp",
+      "unrs-resolver",
+      "utf-8-validate"
+    ]
+  },
+  "overrides": {
+    "@wagmi/core": "2.20.3"
   }
 }
