@@ -3,12 +3,14 @@ import { NextResponse } from "next/server";
 import { verifyTypedData, type Address } from "viem";
 import { EIP712Domain, types } from "../../../lib/typed";
 
+type LoginMsg = { address: Address; timestamp: string };
+
 export async function POST(req: Request) {
   try {
     const { address, signature, message } = (await req.json()) as {
       address: Address;
       signature: `0x${string}`;
-      message: Record<string, unknown>;
+      message: LoginMsg;
     };
 
     const valid = await verifyTypedData({
