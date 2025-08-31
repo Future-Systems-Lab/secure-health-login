@@ -3,6 +3,7 @@
 import { useAccount, useConnect, useDisconnect, useSignTypedData, useChainId } from "wagmi";
 import { useEffect, useState } from "react";
 import { EIP712Domain, types } from "../lib/typed";
+import type { LoginMessage } from "@/lib/typed";
 
 export default function Page() {
   const { address, isConnected } = useAccount();
