@@ -8,11 +8,13 @@ import { cookieStorage, createStorage } from "wagmi";
 import { injected } from "@wagmi/connectors";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
+// widen connector type to wagmi Connector[]
+const _connectors = [injected({ shimDisconnect: true })] as unknown as Connector[];
+
 const config = createConfig({
   chains: [sepolia],
   transports: { [sepolia.id]: http("https://rpc.ankr.com/eth_sepolia") },
-  // widen connector type to wagmi Connector[]
-  const _connectors = [injected({ shimDisconnect: true })] as unknown as Connector[];
   connectors: _connectors,
   storage: createStorage({ storage: cookieStorage }),
 });
