@@ -34,3 +34,5 @@ if (/const\s+message\s*:\s*{/.test(s)) {
 
 // 5) Save
 writeFileSync(p, s);
+
+export default function DefaultExport(){ return null }
