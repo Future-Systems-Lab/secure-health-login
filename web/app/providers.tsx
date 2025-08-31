@@ -8,7 +8,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const config = createConfig({
   chains: [sepolia],
   transports: { [sepolia.id]: http("https://rpc.sepolia.org") },
-  // @ts-expect-error wagmi/core type mismatch across versions
   connectors: [injected()],
   storage: createStorage({ storage: cookieStorage }),
 });
