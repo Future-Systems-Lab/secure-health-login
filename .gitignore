@@ -9,3 +9,4 @@ dist/
 .env.local
 # local scratch
 web/_scratch/
+tag-security/
