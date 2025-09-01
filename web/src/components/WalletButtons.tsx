@@ -2,9 +2,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useConnect } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
 
 export default function WalletButtons() {
+  const { isConnected, address } = useAccount();
   const { connectors, connect, status, error } = useConnect();
 
   const [mounted, setMounted] = useState(false);
@@ -12,45 +13,45 @@ export default function WalletButtons() {
 
   useEffect(() => {
     setMounted(true);
-    if (typeof window !== 'undefined') {
-      const eth = (window as any)?.ethereum;
-      setHasMetaMask(Boolean(eth?.isMetaMask));
-    }
+    const eth = (typeof window !== 'undefined' && (window as any).ethereum) || null;
+    setHasMetaMask(Boolean(eth?.isMetaMask));
   }, []);
 
-  // In this project we use only injected()
+  // We use injected() per the working config
   const injected = connectors.find((c) => c.id === 'injected');
 
-  const canConnectMetaMask = mounted && hasMetaMask && injected;
+  // Auto-open MetaMask once on mount if present and not connected
+  useEffect(() => {
+    if (!mounted) return;
+    if (!hasMetaMask) return;
+    if (!injected) return;
+    if (isConnected) return;
+    if (status !== 'idle') return;
+    connect({ connector: injected });
+  }, [mounted, hasMetaMask, injected, isConnected, status, connect]);
+
+  if (!mounted) return null;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320 }}>
-      {/* If MetaMask is present, connect via injected */}
-      {canConnectMetaMask ? (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 360 }}>
+      {!hasMetaMask ? (
+        <button onClick={() => window.open('https://metamask.io/download/', '_blank')}>
+          Install MetaMask
+        </button>
+      ) : !isConnected ? (
         <button
-          onClick={() => connect({ connector: injected! })}
+          onClick={() => injected && connect({ connector: injected })}
           disabled={status === 'pending'}
         >
           Connect with MetaMask{status === 'pending' ? '…' : ''}
         </button>
-      ) : injected && (injected as any).ready ? (
-        // Injected fallback when a different wallet is present
-        <button
-          onClick={() => connect({ connector: injected })}
-          disabled={status === 'pending'}
-        >
-          Connect (Injected){status === 'pending' ? '…' : ''}
-        </button>
       ) : (
-        // No injected provider detected → prompt install
-        <button onClick={() => window.open('https://metamask.io/download/', '_blank')}>
-          Install MetaMask
-        </button>
+        <div style={{ fontSize: 12 }}>
+          Connected: {address?.slice(0, 6)}…{address?.slice(-4)}
+        </div>
       )}
 
-      {mounted && error && (
-        <div style={{ color: 'red', fontSize: 12 }}>{error.message}</div>
-      )}
+      {error && <div style={{ color: 'red', fontSize: 12 }}>{error.message}</div>}
     </div>
   );
 }
