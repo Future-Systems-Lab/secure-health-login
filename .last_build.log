@@ -1,0 +1,35 @@
+
+> web@0.1.0 build /Users/margaritamontanez/secure-health-login/web
+> next build --turbopack
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/margaritamontanez/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/margaritamontanez/secure-health-login/web/pnpm-lock.yaml
+
+   ▲ Next.js 15.5.2 (Turbopack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Finished writing to disk in 18ms
+ ✓ Compiled successfully in 1546ms
+   Skipping linting
+   Checking validity of types ...
+Failed to compile.
+
+./app/page.tsx:41:7
+Type error: Type '{ readonly name: "SecureHealth"; readonly version: "1"; readonly chainId: 11155111; }' is not assignable to type '{ name: string; version: string; chainId: bigint; }'.
+  Types of property 'chainId' are incompatible.
+    Type 'number' is not assignable to type 'bigint'.
+
+[0m [90m 39 |[39m     }[33m;[39m
+ [90m 40 |[39m     [36mconst[39m signature [33m=[39m [36mawait[39m signTypedDataAsync({
+[31m[1m>[22m[39m[90m 41 |[39m       domain[33m:[39m [33mEIP712Domain[39m[33m,[39m
+ [90m    |[39m       [31m[1m^[22m[39m
+ [90m 42 |[39m       types[33m,[39m
+ [90m 43 |[39m       primaryType[33m:[39m [32m"LoginMessage"[39m[33m,[39m
+ [90m 44 |[39m       message[33m,[39m[0m
+Next.js build worker exited with code: 1 and signal: null
+ ELIFECYCLE  Command failed with exit code 1.
