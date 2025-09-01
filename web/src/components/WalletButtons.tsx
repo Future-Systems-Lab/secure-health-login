@@ -23,17 +23,39 @@ export default function WalletButtons() {
   );
   const injected = connectors.find((c) => c.id === 'injected');
 
+  async function openMetaMask() {
+    try {
+      const eth = (window as any)?.ethereum;
+      if (!eth) return;
+      // Trigger the MetaMask popup explicitly
+      await eth.request?.({ method: 'eth_requestAccounts' });
+    } catch (_) {
+      try {
+        const eth = (window as any)?.ethereum;
+        await eth.request?.({
+          method: 'wallet_requestPermissions',
+          params: [{ eth_accounts: {} }],
+        });
+      } catch {}
+    }
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320 }}>
-      {/* MetaMask */}
+      {/* MetaMask connect/install */}
       {mounted && mm ? (
         hasMetaMask || (mm as any).ready ? (
-          <button
-            onClick={() => connect({ connector: mm })}
-            disabled={status === 'pending'}
-          >
-            Connect with MetaMask{status === 'pending' ? '…' : ''}
-          </button>
+          <>
+            <button
+              onClick={() => connect({ connector: mm })}
+              disabled={status === 'pending'}
+            >
+              Connect with MetaMask{status === 'pending' ? '…' : ''}
+            </button>
+            <button onClick={openMetaMask}>
+              Open MetaMask
+            </button>
+          </>
         ) : (
           <button onClick={() => window.open('https://metamask.io/download/', '_blank')}>
             Install MetaMask
