@@ -61,23 +61,22 @@ export default function Page() {
     setStatus(resp.ok ? `ok:${json.ok}` : `error:${json.error || "verify failed"}`);
   }
 
-return (
-  <main style={{ padding: 24, fontFamily: "ui-sans-serif, system-ui" }}>
-    <h1 style={{ fontWeight: 600, marginBottom: 16 }}>Secure Health Login</h1>
+  return (
+    <main style={{ padding: 24, fontFamily: "ui-sans-serif, system-ui" }}>
+      <h1 style={{ fontWeight: 600, marginBottom: 16 }}>Secure Health Login</h1>
 
-    {!isConnected ? (
-      <WalletButtons />
-    ) : (
-      <div style={{ display: "grid", gap: 12, maxWidth: 520 }}>
-        <div>Connected: {address}</div>
-        <button onClick={handleLogin}>Sign in with Ethereum</button>
-        <button onClick={() => disconnect()}>Disconnect</button>
-        <div>Status: {status}</div>
-      </div>
-    )}
-
-    <h2 style={{ marginTop: 40 }}>VITA Transfers (180d)</h2>
-    <VitaChart />
-  </main>
-);
+      {!isConnected ? <ClientOnly><WalletButtonsDynamic /></ClientOnly> : (
+        <div style={{ display: "grid", gap: 12, maxWidth: 520 }}>
+          <div>Connected: {address}</div>
+          <button onClick={handleLogin}>Sign in with Ethereum</button>
+          <button onClick={() => disconnect()}>Disconnect</button>
+          <div>Status: {status}</div>
+        </div>
+      )}
+      <h2 style={{ marginTop: 40 }}>VITA Transfers (180d)</h2>
+  <VitaChart />
+</main>
+  <h2 style={{ marginTop: 40 }}>VITA Transfers (180d)</h2>
+  <VitaChart />
+  );
 }
