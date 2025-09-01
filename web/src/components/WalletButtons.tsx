@@ -18,58 +18,33 @@ export default function WalletButtons() {
     }
   }, []);
 
-  const mm = connectors.find(
-    (c) => c.id === 'metaMask' || c.name.toLowerCase().includes('metamask')
-  );
+  // In this project we use only injected()
   const injected = connectors.find((c) => c.id === 'injected');
 
-  async function openMetaMask() {
-    try {
-      const eth = (window as any)?.ethereum;
-      if (!eth) return;
-      // Trigger the MetaMask popup explicitly
-      await eth.request?.({ method: 'eth_requestAccounts' });
-    } catch (_) {
-      try {
-        const eth = (window as any)?.ethereum;
-        await eth.request?.({
-          method: 'wallet_requestPermissions',
-          params: [{ eth_accounts: {} }],
-        });
-      } catch {}
-    }
-  }
+  const canConnectMetaMask = mounted && hasMetaMask && injected;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320 }}>
-      {/* MetaMask connect/install */}
-      {mounted && mm ? (
-        hasMetaMask || (mm as any).ready ? (
-          <>
-            <button
-              onClick={() => connect({ connector: mm })}
-              disabled={status === 'pending'}
-            >
-              Connect with MetaMask{status === 'pending' ? '…' : ''}
-            </button>
-            <button onClick={openMetaMask}>
-              Open MetaMask
-            </button>
-          </>
-        ) : (
-          <button onClick={() => window.open('https://metamask.io/download/', '_blank')}>
-            Install MetaMask
-          </button>
-        )
-      ) : null}
-
-      {/* Injected fallback when MetaMask not present */}
-      {mounted && injected && (injected as any).ready && !hasMetaMask && (
+      {/* If MetaMask is present, connect via injected */}
+      {canConnectMetaMask ? (
+        <button
+          onClick={() => connect({ connector: injected! })}
+          disabled={status === 'pending'}
+        >
+          Connect with MetaMask{status === 'pending' ? '…' : ''}
+        </button>
+      ) : injected && (injected as any).ready ? (
+        // Injected fallback when a different wallet is present
         <button
           onClick={() => connect({ connector: injected })}
           disabled={status === 'pending'}
         >
           Connect (Injected){status === 'pending' ? '…' : ''}
+        </button>
+      ) : (
+        // No injected provider detected → prompt install
+        <button onClick={() => window.open('https://metamask.io/download/', '_blank')}>
+          Install MetaMask
         </button>
       )}
 
