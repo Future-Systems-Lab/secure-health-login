@@ -85,3 +85,8 @@ Rights Reserved, Unlicensed
 
 [![Release](https://img.shields.io/github/v/tag/Where-Mental-Wellness-Meets-Metaverse/secure-health-login)](../../releases)
 [![Tag](https://img.shields.io/badge/demo-v0.1.0-informational)](#)
+
+## 🔐 Secure Health Login
+Production-ready SIWE (EIP-712) + EIP-4337 login layer, deployed on Vercel with Dune analytics.
+Live: https://secure-health-login.vercel.app
+
