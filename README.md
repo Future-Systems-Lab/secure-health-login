@@ -1,3 +1,17 @@
+## Demo Showcase
+
+- Wallet login (SIWE, EIP-712)
+- VITA transfers chart via Dune Query 5617908
+- Tag: v0.1.0
+
+### Quickstart
+```bash
+pnpm install --dir web
+pnpm --dir web run dev
+```
+
+---
+
 # 🏥 Secure Health Login — Web3 Authentication for Healthcare  
 
 A practitioner-facing authentication demo that replaces passwords with **wallet-based login**.  
@@ -68,3 +82,6 @@ pnpm run dev
 ## 📜 License
 
 Rights Reserved, Unlicensed
+
+[![Release](https://img.shields.io/github/v/tag/Where-Mental-Wellness-Meets-Metaverse/secure-health-login)](../../releases)
+[![Tag](https://img.shields.io/badge/demo-v0.1.0-informational)](#)
