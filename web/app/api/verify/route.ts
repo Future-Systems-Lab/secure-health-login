@@ -1,16 +1,14 @@
 // Rights Reserved, Unlicensed
 import { NextResponse } from "next/server";
-import { verifyTypedData, type Address } from "viem";
-import { EIP712Domain, types } from "../../../lib/typed";
-
-type LoginMsg = { address: Address; timestamp: string };
+import { verifyTypedData } from "viem";
+import { EIP712Domain, types, type LoginMessage } from "@/lib/typed";
 
 export async function POST(req: Request) {
   try {
     const { address, signature, message } = (await req.json()) as {
-      address: Address;
+      address: `0x${string}`;
       signature: `0x${string}`;
-      message: LoginMsg;
+      message: LoginMessage;
     };
 
     const valid = await verifyTypedData({

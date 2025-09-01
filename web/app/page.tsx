@@ -11,6 +11,9 @@ import { useAccount, useConnect, useDisconnect, useSignTypedData, useChainId } f
 import { EIP712Domain, types, type LoginMessage } from "@/lib/typed";
 
 export default function Page() {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const { connect, connectors, isPending } = useConnect();

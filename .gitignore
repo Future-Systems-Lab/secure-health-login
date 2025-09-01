@@ -4,3 +4,8 @@ node_modules/
 dist/
 .env
 .vercel
+
+# local secrets
+.env.local
+# local scratch
+web/_scratch/
