@@ -54,5 +54,8 @@
   },
   "overrides": {
     "@wagmi/core": "2.20.3"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
