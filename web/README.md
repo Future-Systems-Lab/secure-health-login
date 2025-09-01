@@ -1,29 +1,20 @@
-# SecureHealth Login  
-Baseline implementation of EIP-712 typed login (SIWE-style) with Next.js, wagmi, and iron-session.  
+Rights Reserved, Unlicensed
 
-## Features  
-- Wallet connect (Sepolia testnet)  
-- EIP-712 typed login signing  
-- Basic session handling  
+# Secure Health Login — Web
 
-## Getting Started  
+## Features
+- Clickable wallet buttons (wagmi 2.x, viem 2.x)
+- SIWE with EIP-712 typed data
+- VITA transfers chart via Dune Query 5617908
+
+## Run
 ```bash
 pnpm install
-pnpm dev
+pnpm run dev
 ```
 
-## Tag History  
-- v1-login-working → Baseline login flow working
-
-
-## Stable Wallet Login Demo (Aug 31, 2025)
-
-- [secure-health-login @ stable-login-ok-2025-08-31](https://github.com/<your-username>/secure-health-login/tree/stable-login-ok-2025-08-31)  
-  - Fixed hydration mismatch.  
-  - Wallet buttons clickable.  
-  - VITA token chart integrated (Dune Query 5617908).  
-
-### Related PRs
-- Smart Contract Best Practices → Healthcare compliance checklist.  
-- CNCF TAG-Security → Healthcare + mental wellness doc.  
-- Dune Spellbook → Baseline Ethereum tx model + 7-day avg.
+## Environment
+Create .env.local in web/ with:
+```
+DUNE_QUERY_ID=5617908
+```
