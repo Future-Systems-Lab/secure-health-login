@@ -1,16 +1,23 @@
 // Rights Reserved, Unlicensed
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useConnect } from 'wagmi';
 
 export default function WalletButtons() {
   const { connectors, connect, status, error } = useConnect();
 
-  // Detect MetaMask in-browser
-  const hasMetaMask =
-    typeof window !== 'undefined' && (window as any)?.ethereum?.isMetaMask;
+  const [mounted, setMounted] = useState(false);
+  const [hasMetaMask, setHasMetaMask] = useState(false);
 
-  // Find MetaMask & Injected connectors (if present)
+  useEffect(() => {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const eth = (window as any)?.ethereum;
+      setHasMetaMask(Boolean(eth?.isMetaMask));
+    }
+  }, []);
+
   const mm = connectors.find(
     (c) => c.id === 'metaMask' || c.name.toLowerCase().includes('metamask')
   );
@@ -18,8 +25,8 @@ export default function WalletButtons() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 320 }}>
-      {/* MetaMask button */}
-      {mm ? (
+      {/* MetaMask */}
+      {mounted && mm ? (
         hasMetaMask || (mm as any).ready ? (
           <button
             onClick={() => connect({ connector: mm })}
@@ -34,8 +41,8 @@ export default function WalletButtons() {
         )
       ) : null}
 
-      {/* Injected fallback (only if available and not MetaMask-specific) */}
-      {injected && (injected as any).ready && !hasMetaMask && (
+      {/* Injected fallback when MetaMask not present */}
+      {mounted && injected && (injected as any).ready && !hasMetaMask && (
         <button
           onClick={() => connect({ connector: injected })}
           disabled={status === 'pending'}
@@ -44,7 +51,7 @@ export default function WalletButtons() {
         </button>
       )}
 
-      {error && (
+      {mounted && error && (
         <div style={{ color: 'red', fontSize: 12 }}>{error.message}</div>
       )}
     </div>
