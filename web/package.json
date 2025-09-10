@@ -23,5 +23,8 @@
       "@wagmi/connectors": "5.9.9",
       "viem": "2.36.0"
     }
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11"
   }
 }
