@@ -1,25 +1,27 @@
-// Rights Reserved, Unlicensed
-"use client";
+// Rights Reserved, UnLicensed
+"use client"
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts"
 
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+export default function VitaChart({ data }: { data: any[] }) {
+  if (!data || data.length === 0) return <p>No data available</p>
 
-type Props = {
-  data: { date: string; value: number }[];
-};
-
-export default function VitaChart({ data }: Props) {
   return (
-    <div style={{ width: "100%", height: 300 }}>
-      <ResponsiveContainer>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
-  );
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="day" />
+        <YAxis />
+        <Tooltip />
+        <Line type="monotone" dataKey="transfers" stroke="#8884d8" />
+      </LineChart>
+    </ResponsiveContainer>
+  )
 }
-

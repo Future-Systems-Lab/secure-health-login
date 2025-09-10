@@ -1,9 +1,12 @@
-// Rights Reserved, Unlicensed
+// Rights Reserved, UnLicensed
 import VitaChart from "@/components/VitaChart"
 import { getChartData } from "@/lib/getChartData"
 
+export const dynamic = "force-dynamic"
+
 export default async function Home() {
   const data = await getChartData()
+  console.log("DEBUG page data:", JSON.stringify(data, null, 2))
 
   return (
     <main style={{ padding: "2rem" }}>
@@ -12,4 +15,3 @@ export default async function Home() {
     </main>
   )
 }
-
