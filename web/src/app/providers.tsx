@@ -1,18 +1,17 @@
 // Rights Reserved, Unlicensed
 "use client";
 
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { sepolia } from "wagmi/chains";
-import { injected } from "@wagmi/connectors";
 import { ReactNode } from "react";
+import { createConfig, http, cookieStorage, createStorage, WagmiProvider } from "wagmi";
+import { injected } from "@wagmi/connectors";
+import { sepolia } from "wagmi/chains";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const config = createConfig({
   chains: [sepolia],
-  transports: {
-    [sepolia.id]: http(),
-  },
+  transports: { [sepolia.id]: http("https://rpc.sepolia.org") },
   connectors: [injected()],
+  storage: createStorage({ storage: cookieStorage }),
 });
 
 const queryClient = new QueryClient();
