@@ -1,15 +1,10 @@
-// Rights Reserved, Unlicensed
 "use client";
-
 import WalletButtons from "@/components/WalletButtons";
-import VitaChart from "@/components/VitaChart";
-
 export default function Home() {
   return (
-    <main style={{ padding: "2rem" }}>
+    <main style={{ padding: 16 }}>
+      <h1 style={{marginBottom:8}}>Wallet test</h1>
       <WalletButtons />
-      <h1>VITA Transfers (30d)</h1>
-      <VitaChart />
     </main>
   );
 }
