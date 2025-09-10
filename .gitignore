@@ -10,3 +10,6 @@ dist/
 # local scratch
 web/_scratch/
 tag-security/
+
+# editor backups
+*.save
