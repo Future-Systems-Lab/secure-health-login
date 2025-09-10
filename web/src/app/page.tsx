@@ -3,7 +3,6 @@
 
 import WalletButtons from "@/components/WalletButtons";
 import VitaChart from "@/components/VitaChart";
-import { getChartData } from "@/lib/getChartData";
 
 export default function Home() {
   return (
