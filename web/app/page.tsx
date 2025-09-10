@@ -76,7 +76,7 @@ return (
       </div>
     )}
 
-    <h2 style={{ marginTop: 40 }}>VITA Transfers (180d)</h2>
+    <h2 style={{ marginTop: 40 }}>VITA Transfers (30d)</h2>
     <VitaChart />
   </main>
 );
