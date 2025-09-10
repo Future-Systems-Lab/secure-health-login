@@ -43,7 +43,7 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(ethers@5.8.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))
       viem:
-        specifier: ^2.16.5
+        specifier: 2.36.0
         version: 2.36.0(bufferutil@4.0.9)(typescript@5.9.2)(utf-8-validate@5.0.10)(zod@3.22.4)
       wagmi:
         specifier: 2.16.9
