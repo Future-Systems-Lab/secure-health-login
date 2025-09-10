@@ -1,4 +1,4 @@
-// Rights Reserved, UnLicensed
+// Rights Reserved, Unlicensed
 "use client";
 
 import VitaChart from "@/components/VitaChart";
