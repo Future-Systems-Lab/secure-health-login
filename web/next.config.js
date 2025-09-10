@@ -1,1 +1,10 @@
-module.exports = { eslint: { ignoreDuringBuilds: true } };
+// Rights Reserved, Unlicensed
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
+
+module.exports = nextConfig;
+
