@@ -1,10 +1,15 @@
 // Rights Reserved, Unlicensed
-import Providers from "@/app/providers";
-export const metadata = { title: "secure-health-login" };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+"use client";
+
+import Providers from "./providers";
+import { ReactNode } from "react";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body><Providers>{children}</Providers></body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
