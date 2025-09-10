@@ -1,4 +1,6 @@
 // Rights Reserved, UnLicensed
+"use client";
+
 import VitaChart from "@/components/VitaChart"
 import { getChartData } from "@/lib/getChartData"
 import WalletButtons from "@/components/WalletButtons"
