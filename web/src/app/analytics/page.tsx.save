@@ -1,0 +1,28 @@
+// Rights Reserved, Unlicensed
+"use client";
+import { useEffect, useState } from "react";
+import { getChartData } from "@/lib/getChartData";
+import VitaChart from "@/components/VitaChart";
+
+export default function AnalyticsPage() {
+  const [chartData, setChartData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getChartData().then(data => {
+      setChartData(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <p>Loading chart data…</p>;
+  if (!chartData.length) return <p>No data available.</p>;
+
+  return (
+    <div style={{ padding: 32 }}>
+      <h1>Analytics</h1>
+      <VitaChart data={chartData} />
+    </div>
+  );
+}
+\\\

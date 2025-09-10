@@ -1,8 +1,11 @@
 // Rights Reserved, Unlicensed
 "use client";
+
 import { useEffect, useState } from "react";
 import { SiweMessage } from "siwe";
 import { getAddress } from "viem";
+import { getChartData } from "../lib/getChartData";
+import VitaChart from "../components/VitaChart";
 
 type Me = { address: string | null; role: "Patient" | "Practitioner" | null };
 
@@ -12,8 +15,12 @@ export default function Home() {
   const [me, setMe] = useState<Me>({ address: null, role: null });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [chartData, setChartData] = useState<any[]>([]);
 
-  useEffect(() => { fetch("/api/me").then(r => r.json()).then(setMe).catch(()=>{}); }, []);
+  useEffect(() => {
+    fetch("/api/me").then(r => r.json()).then(setMe).catch(() => {});
+    getChartData().then(setChartData).catch(console.error);
+  }, []);
 
   async function directConnect() {
     try {
@@ -23,7 +30,7 @@ export default function Home() {
       if (!eth) { setStatus("NO_INJECTED_WALLET"); return; }
       try {
         await eth.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0xaa36a7" }] });
-      } catch (e:any) {
+      } catch (e: any) {
         if (e?.code === 4902) {
           await eth.request({
             method: "wallet_addEthereumChain",
@@ -41,7 +48,7 @@ export default function Home() {
       const a = accs?.[0] ?? null;
       setAddr(a);
       setStatus(a ? "CONNECTED" : "NO_ACCOUNTS");
-    } catch (e:any) { setErr(e?.message ?? "connect_error"); }
+    } catch (e: any) { setErr(e?.message ?? "connect_error"); }
   }
 
   async function siweSign() {
@@ -73,7 +80,7 @@ export default function Home() {
       const data = await res.json();
       setMe({ address: data.address, role: data.role });
       setStatus("SIWE_OK");
-    } catch (e:any) { setErr(e?.message ?? "siwe_error"); }
+    } catch (e: any) { setErr(e?.message ?? "siwe_error"); }
     finally { setBusy(false); }
   }
 
@@ -98,6 +105,11 @@ export default function Home() {
       )}
 
       {err && <p style={{ color: "crimson" }}>Error: {err}</p>}
+
+      <hr style={{ margin: "40px 0" }} />
+      <h2>VITA Token Activity</h2>
+      <VitaChart data={chartData} />
     </main>
   );
 }
+
