@@ -1,9 +1,13 @@
+// Rights Reserved, Unlicensed
 "use client";
+
 import WalletButtons from "@/components/WalletButtons";
-export default function Home() {
+
+export default function Page() {
+  console.log("page: rendered");
   return (
-    <main style={{ padding: 16 }}>
-      <h1 style={{marginBottom:8}}>Wallet test</h1>
+    <main style={{ padding: 24 }}>
+      <h1>Wallet test</h1>
       <WalletButtons />
     </main>
   );
