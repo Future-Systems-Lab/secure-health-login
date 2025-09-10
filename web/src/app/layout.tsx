@@ -1,4 +1,6 @@
 // Rights Reserved, Unlicensed
+"use client";
+
 import "./globals.css";
 import Providers from "./providers";
 
