@@ -6,7 +6,7 @@ import { useAccount, useConnect } from "wagmi";
 import { injected } from "@wagmi/connectors";
 
 export default function WalletButtons() {
-  const { connect } = useConnect({ connector: injected() });
+  const { connect } = useConnect({ connectors: [injected()] });
   const { address, isConnected } = useAccount();
   const [hasProvider, setHasProvider] = useState(false);
 
