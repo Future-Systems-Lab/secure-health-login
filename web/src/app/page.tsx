@@ -2,8 +2,10 @@
 "use client";
 
 import VitaChart from "@/components/VitaChart";
-import { getChartData } from "@/lib/getChartData";
 import WalletButtons from "@/components/WalletButtons";
+import { getChartData } from "@/lib/getChartData";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const data = await getChartData();
