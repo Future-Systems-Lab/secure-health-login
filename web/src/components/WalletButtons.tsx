@@ -6,15 +6,19 @@ import { useAccount, useConnect } from "wagmi"
 import { injected } from "@wagmi/connectors"
 
 export default function WalletButtons() {
-  const { connect } = useConnect({ connector: injected() })
+  const { connectAsync } = useConnect({ connector: injected() })
   const { isConnected } = useAccount()
   const [hasMetaMask, setHasMetaMask] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     if (typeof window !== "undefined" && (window as any).ethereum?.isMetaMask) {
       setHasMetaMask(true)
     }
   }, [])
+
+  if (!mounted) return null
 
   if (isConnected) {
     return <button className="px-4 py-2 rounded-xl bg-green-600 text-white">Connected</button>
@@ -34,7 +38,13 @@ export default function WalletButtons() {
       )}
       {hasMetaMask && (
         <button
-          onClick={() => connect()}
+          onClick={async () => {
+            try {
+              await connectAsync({ connector: injected() })
+            } catch (err) {
+              console.error(err)
+            }
+          }}
           className="px-4 py-2 rounded-xl bg-purple-600 text-white"
         >
           Connect with MetaMask
