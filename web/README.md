@@ -1,20 +1,32 @@
-Rights Reserved, Unlicensed
+# Future Systems Lab
 
-# Secure Health Login — Web
+Future Systems Lab is a hub for professional and academic projects bridging:
 
-## Features
-- Clickable wallet buttons (wagmi 2.x, viem 2.x)
-- SIWE with EIP-712 typed data
-- VITA transfers chart via Dune Query 5617908
+- **Analytics** — data pipelines, dashboards, healthcare informatics  
+- **Blockchain / Web3** — smart contracts, decentralized identity, tokenomics  
+- **Governance & Security** — compliance, HL7/FHIR, cyber governance frameworks  
 
-## Run
-```bash
-pnpm install
-pnpm run dev
-```
+---
 
-## Environment
-Create .env.local in web/ with:
-```
-DUNE_QUERY_ID=5617908
-```
+## 🌱 Applied Domains
+
+Skills are demonstrated through projects in:
+
+- **Mental Wellness** — tokenized engagement and data integration  
+- **Nutrition** — data analysis and privacy-preserving health applications  
+- **Digital Health Systems** — secure login, open standards, healthcare IT  
+
+---
+
+## 📂 Domain Case Studies
+
+- **Mental Wellness ([Where-Mental-Wellness-Meets-Metaverse](https://github.com/Where-Mental-Wellness-Meets-Metaverse))**  
+  Case study tracking the full lifecycle from concept through deployment.  
+  Includes the HypnoNeuro ecosystem, EncryptHealth, and related token projects.  
+
+---
+
+## ⭐ Featured Repositories
+
+- [org-inventory-and-showcase](https://github.com/Future-Systems-Lab/org-inventory-and-showcase) — migration record
+
