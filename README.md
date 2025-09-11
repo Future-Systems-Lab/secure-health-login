@@ -7,13 +7,25 @@ Live demo: https://secure-health-login.vercel.app
 ## Demo Showcase
 
 - Wallet login (SIWE, EIP-712) with MetaMask (wagmi v2)
-- VITA transfers chart
+- VITA token analytics
 
 <br>
 
-![VITA Token Activity — Section 1](docs/vita_chart.png)
+![VITA Transfers — Jan 2022–Sep 2025](docs/vita_chart.png)
 
 View on Dune: https://dune.com/queries/5617908
+
+### VITA Top Addresses
+
+<br>
+
+![Top Addresses — Jan 2022–Sep 2025](docs/vita_top_addresses.png)
+
+### Retention & Engagement
+
+<br>
+
+![Retention & Engagement — Jan 2022–Sep 2025](docs/vita_retention.png)
 
 ## Features
 - Passwordless login with SIWE
@@ -25,5 +37,5 @@ View on Dune: https://dune.com/queries/5617908
 
 ## Quickstart (local dev)
 ```bash
-# Rights Reserved, Unlicensed
+: # Rights Reserved, Unlicensed
 cd ~
