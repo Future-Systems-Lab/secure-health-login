@@ -1,38 +1,45 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useAccount, useConnect } from "wagmi";
-import { injected } from "@wagmi/connectors";
+// Rights Reserved, Unlicensed
+"use client"
+
+import { useEffect, useState } from "react"
+import { useAccount, useConnect } from "wagmi"
+import { injected } from "@wagmi/connectors"
 
 export default function WalletButtons() {
-  const [mounted, setMounted] = useState(false);
-  const { address, isConnected } = useAccount();
-  const { connect, connectors, status, error } = useConnect();
+  const { connect } = useConnect({ connector: injected() })
+  const { isConnected } = useAccount()
+  const [hasMetaMask, setHasMetaMask] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-    console.log("wallet-mount", { connectors });
-  }, [connectors]);
+    if (typeof window !== "undefined" && (window as any).ethereum?.isMetaMask) {
+      setHasMetaMask(true)
+    }
+  }, [])
 
-  if (!mounted) return <div style={{padding:8,border:"1px solid #ccc"}}>mounting…</div>;
+  if (isConnected) {
+    return <button className="px-4 py-2 rounded-xl bg-green-600 text-white">Connected</button>
+  }
 
   return (
-    <div style={{margin:"12px 0",padding:12,border:"2px dashed #999"}}>
-      <div style={{fontSize:12,opacity:.7}}>isConnected: {String(isConnected)} | addr: {address ?? "-"}</div>
-      {!isConnected ? (
-        <button
-          id="connect-btn"
-          onClick={() => connect({ connector: injected() })}
-          style={{padding:"8px 12px",border:"1px solid #333",borderRadius:6,marginTop:8}}
-          disabled={status === "pending"}
+    <div className="flex flex-col gap-2">
+      {!hasMetaMask && (
+        <a
+          href="https://metamask.io/download/"
+          target="_blank"
+          rel="noreferrer"
+          className="px-4 py-2 rounded-xl bg-blue-600 text-white text-center"
         >
-          {status === "pending" ? "Connecting…" : "Connect with MetaMask"}
-        </button>
-      ) : (
-        <button disabled style={{padding:"8px 12px",border:"1px solid #333",borderRadius:6,marginTop:8}}>
-          Connected: {address}
+          Install MetaMask
+        </a>
+      )}
+      {hasMetaMask && (
+        <button
+          onClick={() => connect()}
+          className="px-4 py-2 rounded-xl bg-purple-600 text-white"
+        >
+          Connect with MetaMask
         </button>
       )}
-      {error ? <div style={{color:"red",marginTop:8}}>Error: {error.shortMessage || error.message}</div> : null}
     </div>
-  );
+  )
 }
