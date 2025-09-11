@@ -2,18 +2,22 @@
 # 🔐 Secure Health Login
 
 Production-ready SIWE (EIP-712) + EIP-4337 login layer, deployed on Vercel with Dune analytics.  
-**Live Demo:** [https://secure-health-login.vercel.app](https://secure-health-login.vercel.app)
+**Live Demo (Wallet Connect):** [secure-health-login.vercel.app](https://secure-health-login.vercel.app)
 
 ---
 
 ## 🚀 Demo Showcase
-- Wallet login (SIWE, EIP-712)
-- VITA transfers chart via [Dune Query 5617908](https://dune.com/queries/5617908)
+- 🔑 Wallet login (SIWE, EIP-712) — connect with MetaMask in the live demo  
+- 📊 VITA transfers chart:
+
+![VITA Transfers](docs/vita_chart.png)  
+[View live chart on Dune →](https://dune.com/queries/5617908)
+
 - Current release tag: **v0.1.0**
 
 ---
 
-## ⚡ Quickstart
+## ⚡ Quickstart (Developers)
 
 ```bash
 pnpm install --dir web
@@ -37,11 +41,11 @@ Built for privacy-first healthcare systems using:
 
 ## ✨ Features
 
-* 🔑 Passwordless login via MetaMask or other injected wallets
-* 🛡️ Verified EIP-712 typed data signing for session integrity
-* ⚙️ EIP-4337 smart account abstraction support
-* 📊 Analytics integration via Dune dashboards
-* 🌐 Deployed on Vercel for fast, global access
+* Passwordless login via MetaMask or other injected wallets
+* Verified EIP-712 typed data signing for session integrity
+* EIP-4337 smart account abstraction support
+* Analytics integration via Dune dashboards
+* Deployed on Vercel for fast, global access
 
 ---
 
@@ -50,8 +54,8 @@ Built for privacy-first healthcare systems using:
 * **src/** — Core application and smart contract source
 * **test/** — Automated security and reliability tests
 * **deployments/** — Environment deployment configs
-* **docs/** — Technical references and documentation
-* **marketing/** — Explanatory and recruiter-facing materials
+* **docs/** — Technical references, images, and documentation
+* **marketing/** — Recruiter-facing and explanatory materials
 
 ---
 
@@ -59,4 +63,5 @@ Built for privacy-first healthcare systems using:
 
 All Rights Reserved, Unlicensed
 
+```
 ```
