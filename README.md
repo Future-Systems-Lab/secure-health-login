@@ -1,20 +1,19 @@
-<!-- Rights Reserved, Unlicensed -->
-
 # Secure Health Login — Web3 Authentication for Healthcare
 
 Production-ready SIWE (EIP-712) + EIP-4337 login layer. Deployed on Vercel. Includes Dune analytics for demo telemetry.
 
-**Live demo:** https://secure-health-login.vercel.app
-
----
+Live demo: https://secure-health-login.vercel.app
 
 ## Demo Showcase
-- Wallet login (SIWE, EIP-712) with MetaMask (wagmi v2)
-- VITA transfers chart  
-  ![VITA Transfers](docs/vita_chart.png)  
-  View on Dune: https://dune.com/queries/5617908
 
----
+- Wallet login (SIWE, EIP-712) with MetaMask (wagmi v2)
+- VITA transfers chart
+
+<br>
+
+![VITA Token Activity — Section 1](docs/vita_chart.png)
+
+View on Dune: https://dune.com/queries/5617908
 
 ## Features
 - Passwordless login with SIWE
@@ -24,14 +23,7 @@ Production-ready SIWE (EIP-712) + EIP-4337 login layer. Deployed on Vercel. Incl
 - Next.js app, Vercel deployment
 - Dune-powered activity visualization
 
----
-
 ## Quickstart (local dev)
-
 ```bash
 # Rights Reserved, Unlicensed
 cd ~
-cd ~/secure-health-login/web
-pnpm install
-lsof -ti :3011 | xargs kill -9 2>/dev/null || true
-pnpm exec next dev -p 3011
