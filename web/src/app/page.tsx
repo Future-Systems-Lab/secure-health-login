@@ -1,14 +1,13 @@
 // Rights Reserved, Unlicensed
-"use client";
+"use client"
 
-import WalletButtons from "@/components/WalletButtons";
+import WalletButtons from "@/components/WalletButtons"
 
-export default function Page() {
-  console.log("page: rendered");
+export default function Home() {
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Wallet test</h1>
+    <main className="flex flex-col items-center justify-center min-h-screen p-8 space-y-12">
+      <h1 className="text-4xl font-bold">🔐 Secure Health Login</h1>
       <WalletButtons />
     </main>
-  );
+  )
 }
