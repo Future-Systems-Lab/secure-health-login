@@ -11,11 +11,15 @@ Live demo: https://secure-health-login.vercel.app
 
 <br>
 
-![Top 100 VITA Addresses — last 30 days](docs/vita_top100_30d.png)
+![Top 100 VITA Addresses — last 30 days](assets/vita_top100_30d.png)
+
+*Top 100 VITA addresses ranked by total transfer activity in the last 30 days (sent + received).*
 
 <br>
 
-![VITA — New Addresses per Day (180d)](docs/vita_new_addresses_180d.png)
+![VITA — New Addresses per Day (180d)](assets/vita_new_addresses_180d.png)
+
+*First-time VITA participant addresses per day over the past 180 days from `erc20_ethereum.evt_transfer`.*
 
 View on Dune: https://dune.com/dr_meg/vita-dashboard
 
@@ -29,4 +33,5 @@ View on Dune: https://dune.com/dr_meg/vita-dashboard
 
 ## Quickstart (local dev)
 ```bash
+: # Rights Reserved, Unlicensed
 cd ~
