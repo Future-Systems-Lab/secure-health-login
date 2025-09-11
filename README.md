@@ -1,67 +1,37 @@
-````markdown
-# 🔐 Secure Health Login
+<!-- Rights Reserved, Unlicensed -->
 
-Production-ready SIWE (EIP-712) + EIP-4337 login layer, deployed on Vercel with Dune analytics.  
-**Live Demo (Wallet Connect):** [secure-health-login.vercel.app](https://secure-health-login.vercel.app)
+# Secure Health Login — Web3 Authentication for Healthcare
 
----
+Production-ready SIWE (EIP-712) + EIP-4337 login layer. Deployed on Vercel. Includes Dune analytics for demo telemetry.
 
-## 🚀 Demo Showcase
-- 🔑 Wallet login (SIWE, EIP-712) — connect with MetaMask in the live demo  
-- 📊 VITA transfers chart:
-
-![VITA Transfers](docs/vita_chart.png)  
-[View live chart on Dune →](https://dune.com/queries/5617908)
-
-- Current release tag: **v0.1.0**
+**Live demo:** https://secure-health-login.vercel.app
 
 ---
 
-## ⚡ Quickstart (Developers)
+## Demo Showcase
+- Wallet login (SIWE, EIP-712) with MetaMask (wagmi v2)
+- VITA transfers chart  
+  ![VITA Transfers](docs/vita_chart.png)  
+  View on Dune: https://dune.com/queries/5617908
+
+---
+
+## Features
+- Passwordless login with SIWE
+- EIP-712 structured signing
+- EIP-4337 account abstraction (optional)
+- Provider: injected (MetaMask) via wagmi v2
+- Next.js app, Vercel deployment
+- Dune-powered activity visualization
+
+---
+
+## Quickstart (local dev)
 
 ```bash
-pnpm install --dir web
-pnpm --dir web run dev
-````
-
-Visit [http://localhost:3011](http://localhost:3011) during local development.
-
----
-
-## 🏥 Secure Health Login — Web3 Authentication for Healthcare
-
-A practitioner-facing authentication demo that replaces passwords with **wallet-based login**.
-Built for privacy-first healthcare systems using:
-
-* **SIWE** (Sign-In with Ethereum)
-* **EIP-712** structured signing
-* **EIP-4337** account abstraction
-
----
-
-## ✨ Features
-
-* Passwordless login via MetaMask or other injected wallets
-* Verified EIP-712 typed data signing for session integrity
-* EIP-4337 smart account abstraction support
-* Analytics integration via Dune dashboards
-* Deployed on Vercel for fast, global access
-
----
-
-## 📂 Project Structure
-
-* **src/** — Core application and smart contract source
-* **test/** — Automated security and reliability tests
-* **deployments/** — Environment deployment configs
-* **docs/** — Technical references, images, and documentation
-* **marketing/** — Recruiter-facing and explanatory materials
-
----
-
-## 📜 License
-
-All Rights Reserved, Unlicensed
-
-```
-```
+# Rights Reserved, Unlicensed
+cd ~
+cd ~/secure-health-login/web
+pnpm install
+lsof -ti :3011 | xargs kill -9 2>/dev/null || true
+pnpm exec next dev -p 3011
