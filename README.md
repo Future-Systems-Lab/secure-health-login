@@ -11,11 +11,7 @@ Live demo: https://secure-health-login.vercel.app
 
 <br>
 
-![Top 100 VITA Addresses — last 30 days](docs/vita_top100_30d.png)
-
-<br>
-
-![VITA — New Addresses per Day (180d)](docs/vita_new_addresses_180d.png)
+![VITA — Top 100 (30d) + New Addresses (180d)](docs/vita_token_charts.png)
 
 View on Dune: https://dune.com/dr_meg/vita-dashboard
 
