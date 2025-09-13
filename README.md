@@ -1,29 +1,29 @@
 # Secure Health Login — Web3 Authentication for Healthcare
 
-Production-ready SIWE (EIP-712) + EIP-4337 login layer. Deployed on Vercel. Includes Dune analytics for demo telemetry.
+Minimal demo of MetaMask login using [wagmi v2](https://wagmi.sh/).
 
-Live demo: https://secure-health-login.vercel.app
+**Live demo:** [https://secure-health-login.vercel.app](https://secure-health-login.vercel.app)
+
+---
 
 ## Demo Showcase
 
-- Wallet login (SIWE, EIP-712) with MetaMask (wagmi v2)
-- VITA analytics: Top 100 addresses (30d) and New addresses per day (180d)
+- 🔐 Wallet login with MetaMask  
+- ⚡ Built on Next.js 15 + wagmi v2  
+- 🌐 Ready for healthcare-focused Web3 authentication experiments  
 
-<br>
+---
 
-![VITA — Top 100 (30d) + New Addresses (180d)](docs/vita_token_charts.png)
+## Analytics Archive (VITA Token)
 
-View on Dune: https://dune.com/dr_meg/vita-dashboard
+This project originally included VITA dashboard analytics.  
+Live charts were removed from the app, but static dashboards are preserved here for reference:
 
-## Features
-- Passwordless login with SIWE
-- EIP-712 structured signing
-- EIP-4337 account abstraction (optional)
-- Provider: injected (MetaMask) via wagmi v2
-- Next.js app, Vercel deployment
-- Dune-powered activity visualization
+![VITA Transfers](docs/images/vita_transfers.png)  
+![VITA Engagement](docs/images/vita_engagement.png)  
 
-## Quickstart (local dev)
-```bash
-: # Rights Reserved, Unlicensed
-cd ~
+---
+
+## License
+
+Rights Reserved, Unlicensed
