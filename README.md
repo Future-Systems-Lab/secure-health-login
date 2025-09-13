@@ -2,7 +2,7 @@
 
 Minimal demo of MetaMask login using [wagmi v2](https://wagmi.sh/).
 
-**Live demo:** [https://secure-health-login.vercel.app](https://secure-health-login.vercel.app)
+**Live demo:** [https://secure-health-login-dfk6unk2d-megs-projects-95a11e5b.vercel.app](https://secure-health-login-dfk6unk2d-megs-projects-95a11e5b.vercel.app)
 
 ---
 
