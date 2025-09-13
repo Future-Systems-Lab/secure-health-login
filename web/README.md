@@ -20,7 +20,7 @@ Skills are demonstrated through projects in:
 
 ## 📂 Domain Case Studies
 
-- **Mental Wellness ([Where-Mental-Wellness-Meets-Metaverse](https://github.com/Where-Mental-Wellness-Meets-Metaverse))**  
+- **Mental Wellness ([Future-Systems-Lab](https://github.com/Future-Systems-Lab))**  
   Case study tracking the full lifecycle from concept through deployment.  
   Includes the HypnoNeuro ecosystem, EncryptHealth, and related token projects.  
 

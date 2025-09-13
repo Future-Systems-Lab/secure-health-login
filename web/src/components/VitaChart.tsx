@@ -1,27 +1,23 @@
-// Rights Reserved, UnLicensed
-"use client"
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
-} from "recharts"
-
-export default function VitaChart({ data }: { data: any[] }) {
-  if (!data || data.length === 0) return <p>No data available</p>
-
+// Rights Reserved, Unlicensed
+'use client'
+import { useEffect, useState } from 'react'
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
+export default function VitaChart() {
+  const [data, setData] = useState<{ x: string; y: number }[]>([])
+  useEffect(() => {
+    setData([{ x: 't0', y: 1 }, { x: 't1', y: 2 }, { x: 't2', y: 1 }])
+  }, [])
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Line type="monotone" dataKey="transfers" stroke="#8884d8" />
-      </LineChart>
-    </ResponsiveContainer>
+    <div style={{ width: '100%', height: 360 }}>
+      <ResponsiveContainer>
+        <LineChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="x" />
+          <YAxis />
+          <Tooltip />
+          <Line type="monotone" dataKey="y" dot={false} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   )
 }

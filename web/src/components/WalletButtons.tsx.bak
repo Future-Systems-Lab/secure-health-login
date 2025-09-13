@@ -1,0 +1,61 @@
+// Rights Reserved, Unlicensed
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useAccount, useConnect, useDisconnect, useSignMessage, useChainId } from 'wagmi'
+import { injected } from '@wagmi/connectors'
+
+export default function WalletButtons() {
+  const { isConnected, address } = useAccount()
+  const chainId = useChainId()
+  const { connectAsync } = useConnect({ connector: injected() })
+  const { disconnect } = useDisconnect()
+  const { signMessageAsync, isPending: signing } = useSignMessage()
+  const [hasMetaMask, setHasMetaMask] = useState(false)
+
+  useEffect(() => {
+    const eth = typeof window !== 'undefined' ? (window as any).ethereum : undefined
+    setHasMetaMask(Boolean(eth && eth.isMetaMask))
+  }, [])
+
+  async function onConnect() {
+    await connectAsync({ connector: injected() })
+  }
+
+  async function onSiwe() {
+    const domain = window.location.host
+    const uri = window.location.origin
+    const issuedAt = new Date().toISOString()
+    const message =
+`Sign-In with Ethereum
+
+URI: ${uri}
+Version: 1
+Chain ID: ${chainId || 1}
+Nonce: 0x0000000000000000000000000000000000000000000000000000000000000000
+Issued At: ${issuedAt}
+Resources:
+- https://${domain}/`
+    await signMessageAsync({ message })
+  }
+
+  if (!hasMetaMask) {
+    return (
+      <a href="https://metamask.io/download/" target="_blank" rel="noreferrer">
+        <button>Install MetaMask</button>
+      </a>
+    )
+  }
+
+  if (!isConnected) {
+    return <button onClick={onConnect}>Connect MetaMask</button>
+  }
+
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="text-sm break-all">{address}</div>
+      <button onClick={onSiwe} disabled={signing}>Sign In (SIWE)</button>
+      <button onClick={() => disconnect()}>Disconnect</button>
+    </div>
+  )
+}
