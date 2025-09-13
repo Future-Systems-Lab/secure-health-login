@@ -14,16 +14,6 @@ Minimal demo of MetaMask login using [wagmi v2](https://wagmi.sh/).
 
 ---
 
-## Analytics Archive (VITA Token)
-
-This project originally included VITA dashboard analytics.  
-Live charts were removed from the app, but static dashboards are preserved here for reference:
-
-![VITA Transfers](docs/images/vita_transfers.png)  
-![VITA Engagement](docs/images/vita_engagement.png)  
-
----
-
 ## License
 
 Rights Reserved, Unlicensed
